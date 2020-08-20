@@ -1,5 +1,10 @@
-module.exports = (function () {
-    let binarySearchTree = {};
+    class BinarySearchTree {
+        constructor() {
+            this.root = null;
+            this.populateBinarySearchTree = populateBinarySearchTree;
+            this.searchBinarySearchTree = searchBinarySearchTree;
+        }
+    }
 
     class Node {
         constructor(data){
@@ -9,21 +14,7 @@ module.exports = (function () {
         }
     }
 
-    class BinarySearchTree {
-        constructor() {
-            this.root = null;
-            this.populateBinarySearchTree = populateBinarySearchTree;
-            this.searchBinarySearchTree = searchBinarySearchTree;
-        }
-    }
-
-    binarySearchTree.createTree = function () {
-        let tree = new BinarySearchTree();
-
-        return tree;
-    }
-
-    let populateBinarySearchTree = function (listOfIntegers) {
+    function populateBinarySearchTree (listOfIntegers) {
         if((!listOfIntegers instanceof Array))
             throw "List of integers must be an array to perform operation."
         let tree = this;
@@ -36,14 +27,14 @@ module.exports = (function () {
         }
     }
 
-    let searchBinarySearchTree = function (data) {
+    function searchBinarySearchTree (data) {
         if(!this.root)
             throw "Tree is empty";
 
         return Boolean(searchNode(this.root, data));
     }
 
-    let searchNode = function (currentNode, data) {
+    function searchNode(currentNode, data) {
         if(!currentNode)
             return null;
 
@@ -57,7 +48,7 @@ module.exports = (function () {
             return searchNode(currentNode.right, data);
     }
 
-    let insertNode = function (currentNode, data) {
+    function insertNode (currentNode, data) {
         if(data > currentNode.data) {
             if(!currentNode.right) {
                 currentNode.right = new Node(data);
@@ -73,5 +64,4 @@ module.exports = (function () {
         }
     }
 
-    return binarySearchTree;
-});
+module.exports = BinarySearchTree;
