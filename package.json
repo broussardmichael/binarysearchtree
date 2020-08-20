@@ -1,0 +1,23 @@
+{
+  "name": "binarysearchtree",
+  "version": "1.0.0",
+  "description": "Binary search tree",
+  "main": "BinarySearchTree.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/broussardmichael/binarysearchtree.git"
+  },
+  "author": "Michael Broussard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/broussardmichael/binarysearchtree/issues"
+  },
+  "homepage": "https://github.com/broussardmichael/binarysearchtree#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.1.1"
+  }
+}
