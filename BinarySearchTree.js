@@ -16,12 +16,20 @@
         if((!listOfIntegers instanceof Array))
             throw "List of integers must be an array to perform operation."
         let tree = this;
-        for(let i = 0; i < listOfIntegers.length;i++){
-            if(!tree.root) {
-                tree.root = new Node(listOfIntegers[i]);
-            } else {
-                insertNode(tree.root, listOfIntegers[i]);
+        const middleIndex = Math.floor(listOfIntegers.length / 2);
+        listOfIntegers.sort(function(a, b) {
+            if (a < b) {
+                return -1;
             }
+            if (a > b) {
+                return 1;
+            }
+            return 0;
+        });
+        const middleKey = listOfIntegers.splice(middleIndex, 1);
+        tree.root = new Node(middleKey[0]);
+        for(let i = 0; i < listOfIntegers.length;i++){
+            insertNode(tree.root, listOfIntegers[i]);
         }
     }
 
