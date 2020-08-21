@@ -1,8 +1,6 @@
     class BinarySearchTree {
         constructor() {
             this.root = null;
-            this.populateBinarySearchTree = populateBinarySearchTree;
-            this.searchBinarySearchTree = searchBinarySearchTree;
         }
     }
 
@@ -63,5 +61,9 @@
             }
         }
     }
+
+    BinarySearchTree.prototype.populateBinarySearchTree = populateBinarySearchTree;
+
+    BinarySearchTree.prototype.searchBinarySearchTree = searchBinarySearchTree;
 
 module.exports = BinarySearchTree;
