@@ -33,11 +33,11 @@
         }
     }
 
-    function searchBinarySearchTree (data) {
+    function findNodeInBinarySearchTree (data) {
         if(!this.root)
             throw "Tree is empty";
 
-        return Boolean(searchNode(this.root, data));
+        return searchNode(this.root, data);
     }
 
     function searchNode(currentNode, data) {
@@ -70,8 +70,50 @@
         }
     }
 
+    function searchRightMost (rootNode, data){
+        if(!rootNode)
+            throw "Root node is required."
+
+        let node = searchNode(rootNode, data);
+        if(node)
+            return searchRight(node);
+        else
+            throw "Node not found.";
+    }
+
+    function searchRight (currentNode) {
+        if(!currentNode.right) {
+            return currentNode;
+        } else {
+            return searchRight(currentNode.right)
+        }
+    }
+
+    function deleteNode (rootNode, data) {
+        if(!rootNode)
+            throw "The root node is required for deletion."
+
+        let nodeToDelete = findNodeInBinarySearchTree(data);
+        let rightMostNode = searchRightMostNode(rootNode, data);
+        nodeToDelete.data = rightMostNode.data;
+        if(nodeToDelete.right.data === rightMostNode.data)
+            nodeToDelete.right = null;
+
+        rightMostNode.left = nodeToDelete.left
+        rightMostNode = null;
+        delete rightMostNode;
+    }
+
+    function isLeafNode(node) {
+        return (node.right === null && node.left === null);
+    }
+
     BinarySearchTree.prototype.populateBinarySearchTree = populateBinarySearchTree;
 
-    BinarySearchTree.prototype.searchBinarySearchTree = searchBinarySearchTree;
+    BinarySearchTree.prototype.findNodeInBinarySearchTree = findNodeInBinarySearchTree;
 
-module.exports = BinarySearchTree;
+    BinarySearchTree.prototype.insertNode = insertNode;
+
+    Node.prototype.isLeafNode = isLeafNode;
+
+    module.exports = BinarySearchTree;
